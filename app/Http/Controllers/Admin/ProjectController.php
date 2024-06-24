@@ -52,7 +52,6 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        
         return view('admin.projects.show', compact('project'));
     }
 
@@ -60,8 +59,9 @@ class ProjectController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Project $project)
-    {
-        return view('admin.projects.edit', compact('project'));
+    {   
+        $types = Type::all();
+        return view('admin.projects.edit', compact('project', 'types'));
     }
 
     /**
@@ -71,6 +71,7 @@ class ProjectController extends Controller
     {
         $project->name = $request->name;
         $project->description =$request->description;
+        $project->type_id =$request->type_id;
         $project->slug = Str::slug($request->name);
         $project->save();
         return view('admin.projects.show', compact('project'));

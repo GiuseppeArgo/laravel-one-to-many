@@ -9,9 +9,9 @@
         <label for="description" class="mb-3">Descrizione : </label>
         <textarea type="text" id="description" name="description" class="mb-3"></textarea>
 
-        <label for="type_id" class="mb-3">Tipologia:</label>
-        <select name="type_id" id="type_id" class="mb-3">
-            <option value="">Seleziona una tipologia</option>
+        <label for="type_id" class="mb-3">Tipo:</label>
+        <select name="type_id" id="type_id" class="form-control mb-3">
+            <option value="">Seleziona un tipo</option>
             @foreach ($types as $type)
                 <option value="{{ $type->id }}">{{ $type->name }}</option>
             @endforeach
