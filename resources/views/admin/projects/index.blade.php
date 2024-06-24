@@ -19,6 +19,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
+                    <th>Tipo</th>
                     <th>Description</th>
                     <th>Slug</th>
                     <th>Opzioni</th>
@@ -29,6 +30,7 @@
                     <tr>
                         <td>{{ $project->id }}</td>
                         <td>{{ $project->name }}</td>
+                        <td>{{ $project->type ? $project->type->name : '' }}</td>
                         <td>{{ $project->description }}</td>
                         <td>{{ $project->slug }}</td>
                         <td>
