@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -24,8 +25,9 @@ class ProjectController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        return view('admin.projects.create');
+    {   
+        $types = Type::all();
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
@@ -35,7 +37,9 @@ class ProjectController extends Controller
     {
         $data = $request->all();
         $newProject = new Project();
+
         $newProject->name = $data['name'];
+        $newProject->type_id = $data['type_id'];
         $newProject->description = $data['description'];
         $newProject->slug = Str::slug($newProject->name);
         $newProject->save();
